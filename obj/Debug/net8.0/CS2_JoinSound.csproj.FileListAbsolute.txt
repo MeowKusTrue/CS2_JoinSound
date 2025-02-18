@@ -1,0 +1,12 @@
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\bin\Debug\net8.0\CS2_JoinSound.deps.json
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\bin\Debug\net8.0\CS2_JoinSound.dll
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\bin\Debug\net8.0\CS2_JoinSound.pdb
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\CS2_JoinSound.csproj.AssemblyReference.cache
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\CS2_JoinSound.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\CS2_JoinSound.AssemblyInfoInputs.cache
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\CS2_JoinSound.AssemblyInfo.cs
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\CS2_JoinSound.csproj.CoreCompileInputs.cache
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\CS2_JoinSound.dll
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\refint\CS2_JoinSound.dll
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\CS2_JoinSound.pdb
+D:\Projects\cs2\Join_Sound\CS2_JoinSound\obj\Debug\net8.0\ref\CS2_JoinSound.dll
