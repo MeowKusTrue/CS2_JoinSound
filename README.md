@@ -21,3 +21,7 @@ CS2_JoinSound — это плагин, который воспроизводит
 
 - **[CounterStrikeSharp](https://github.com/roflmuffin/CounterStrikeSharp)**
 - **[MultiAddonManager](https://github.com/Source2ZE/MultiAddonManager)**
+
+### todo
+
+- использовать SoundEvent вместо play
