@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CS2_JoinSound")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8f9cbcf24eeb4a3624678e84c0a8767e20c98713")]
 [assembly: System.Reflection.AssemblyProductAttribute("CS2_JoinSound")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CS2_JoinSound")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

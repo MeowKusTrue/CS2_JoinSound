@@ -3,20 +3,21 @@ using CounterStrikeSharp.API.Core;
 using CounterStrikeSharp.API.Core.Attributes.Registration;
 using CounterStrikeSharp.API.Modules.Commands;
 using CounterStrikeSharp.API.Modules.Entities;
-using Microsoft.Extensions.Logging;
 using System;
-using System.IO;
-using System.Text.Json;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace CS2_JoinSound
 {
     public class JoinSound : BasePlugin, IPluginConfig<PluginConfig>
     {
-        public override string ModuleName => "JoinSound";
-        public override string ModuleVersion => "0.0.1";
+        public override string ModuleName => "CS2_JoinSound";
+        public override string ModuleVersion => "0.0.2";
         public override string ModuleAuthor => "MeowKus";
 
         public PluginConfig Config { get; set; } = new PluginConfig();
+
+        private Dictionary<CCSPlayerController, int> playerSoundIndex = new Dictionary<CCSPlayerController, int>();
 
         public void OnConfigParsed(PluginConfig config)
         {
@@ -27,7 +28,6 @@ namespace CS2_JoinSound
         public override void Load(bool hotReload)
         {
             base.Load(hotReload);
-
             RegisterListener<Listeners.OnClientPutInServer>(OnClientPutInServer);
         }
 
@@ -36,7 +36,7 @@ namespace CS2_JoinSound
             var player = Utilities.GetPlayerFromSlot(playerSlot);
             if (player != null)
             {
-                PlayJoinSound(player);
+                PlaySound(player);
             }
             else
             {
@@ -44,25 +44,57 @@ namespace CS2_JoinSound
             }
         }
 
-        private void PlayJoinSound(CCSPlayerController player)
+        private void PlaySound(CCSPlayerController player)
         {
             try
             {
-                string musicFile = Config?.MusicFile ?? "default_sound_path.vsnd";
-                player.ExecuteClientCommand($"play {musicFile}");
-
-                Console.WriteLine($"Playing music for player");
+                string soundPath = GetSoundPath(Config.SoundMode, Config.MusicList, player);
+                if (!string.IsNullOrEmpty(soundPath))
+                {
+                    player.ExecuteClientCommand($"play {soundPath}");
+                    Console.WriteLine($"Playing sound for player: {soundPath}");
+                }
+                else
+                {
+                    Console.WriteLine($"No sound found for play event.");
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error while playing music: {ex.Message}");
+                Console.WriteLine($"Error while playing sound: {ex.Message}");
             }
         }
 
-        [ConsoleCommand("play_music")]
-        public void PlayMusicCommand(CCSPlayerController controller, CommandInfo info)
+        private string GetSoundPath(string mode, List<SoundItem> soundList, CCSPlayerController player)
         {
-            PlayJoinSound(controller);
+            if (soundList.Count == 0) return string.Empty;
+
+            if (mode == "random")
+            {
+                Random random = new Random();
+                int index = random.Next(soundList.Count);
+                return soundList[index].Path;
+            }
+            else // "order"
+            {
+                if (!playerSoundIndex.ContainsKey(player))
+                {
+                    playerSoundIndex[player] = 0;
+                }
+
+                int currentIndex = playerSoundIndex[player];
+                string soundPath = soundList[currentIndex].Path;
+
+                playerSoundIndex[player] = (currentIndex + 1) % soundList.Count;
+
+                return soundPath;
+            }
+        }
+
+        [ConsoleCommand("jtest")]
+        public void PlayJoinCommand(CCSPlayerController controller, CommandInfo info)
+        {
+            PlaySound(controller);
         }
     }
 }
